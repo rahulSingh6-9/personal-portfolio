@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ 
+  <script type="text/babel">
+    
+
+   const App = () =>{
+    const [num, setnum] = React.useState(0)
+      const [width, setwidth] = React.useState(window.innerWidth)
+
+      React.useEffect(() => {
+        const handlesize = () => {
+          setwidth(window.innerWidth)
+        }
+        window.addEventListener("resize", handlesize )
+
+        return window.addEventListener("resize", handlesize )
+      })
+ 
+    
+      return <>
+        
+         <h1>{width} and {num}</h1>
+         <button onClick={() => setnum(num+1)}>+</button>
+
+            </>
+   }
+
+  
+ // Render the component into the root div
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+   
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wellness Coach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Playfair+Display:ital,wght@1,400..900&display=swap" rel="stylesheet">
+    <style>
+        /* General Setup */
+        :root {
+            --bg-color: #FFFFFF;
+            --container-bg: #F5FAFF;
+            --text-color: #1A202C;
+            --text-muted: #4A5568;
+            --border-color: #E2E8F0;
+            --gradient-start: #ff8c42;
+            --gradient-end: #ff3c83;
+            --font-primary: 'Inter', sans-serif;
+            --font-cursive: 'Playfair Display', serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-muted);
+            font-family: var(--font-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6, strong {
+            color: var(--text-color);
+        }
+
+        #root {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1rem 1.5rem;
+        }
+
+        .logo {
+            color: var(--gradient-end);
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .logo .subtitle {
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 4px;
+            margin-top: 2px;
+        }
+
+        .logo .subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            animation: grow-underline 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation-delay: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero-container {
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-areas:
+                "title title"
+                "text image";
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-title-container {
+            grid-area: title;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hero-text {
+            grid-area: text;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .tag-ai {
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        #hero-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            position: relative;
+            padding-bottom: 1rem;
+            text-align: center;
+            background: linear-gradient(90deg, var(--gradient-end), var(--gradient-start));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        #hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .cursive {
+            font-family: var(--font-cursive);
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        #hero-title .cursive {
+            background: none;
+            -webkit-text-fill-color: var(--text-color);
+            color: var(--text-color);
+        }
+
+        .description {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .description .highlight {
+            background-color: #FEF3C7;
+            color: #92400E;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .features {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-tag {
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background-color: var(--bg-color);
+        }
+
+        .apply-button {
+            background-color: var(--gradient-start);
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            padding: 1.2rem 4rem;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 15px rgba(255, 140, 66, 0.4);
+        }
+
+        .apply-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 75%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: skewX(-25deg);
+            animation: running-shine 2.5s linear infinite;
+        }
+
+        .apply-button:hover {
+            background-color: var(--gradient-end);
+            box-shadow: 0 8px 20px rgba(255, 60, 131, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .apply-button:active {
+            box-shadow: none;
+            transform: translateY(0);
+        }
+
+        .hero-image {
+            grid-area: image;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Info Cards Section */
+        .info-cards {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: -2.5rem; /* Overlap with hero container */
+            position: relative;
+            z-index: 10;
+        }
+
+        .info-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            min-width: 140px;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(100, 125, 150, 0.06);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease;
+        }
+
+        .info-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(100, 125, 150, 0.1);
+        }
+
+        .info-main {
+            font-size: 2.2rem;
+            font-weight: 500;
+            line-height: 1;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-unit {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            border: none;
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 4rem auto;
+        }
+
+        /* Program For Section */
+        .program-for-section {
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .program-for-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .program-for-title i {
+            font-style: italic;
+            font-family: var(--font-cursive);
+        }
+
+        .program-for-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .program-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            margin: 2.5rem 0;
+        }
+
+        .program-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(100, 125, 150, 0.1);
+        }
+
+        .program-card img {
+            width: 100%;
+            height: 450px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .program-card p {
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            min-height: 60px;
+        }
+
+        .counsellor-button {
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 1.25rem 2.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            font-size: 1.15rem;
+            line-height: 1.3;
+            animation: shake 0.4s ease-in-out infinite alternate;
+            will-change: transform;
+            box-shadow: 0 5px 15px rgba(255, 140, 66, 0.3);
+        }
+
+        .counsellor-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 60, 131, 0.4);
+        }
+
+        /* Outcome Section */
+        .outcome-section {
+            background-color: #1f1f1f;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            border-radius: 20px;
+            margin: 4rem 0;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .outcome-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+            color: var(--text-color);
+            line-height: 1.3;
+        }
+
+        .outcome-title i {
+            font-family: var(--font-cursive);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .outcome-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .outcome-tags {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .tag-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transition: background-color 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .tag-item:hover {
+            background-color: var(--container-bg);
+            border-color: #A0AEC0;
+        }
+
+        .enquire-button {
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 0;
+            transition: box-shadow 0.2s ease-out;
+            animation: shake 0.4s ease-in-out infinite alternate;
+            will-change: transform;
+        }
+
+        .enquire-button::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end), var(--gradient-start));
+            background-size: 200% 100%;
+            border-radius: 8px;
+            transition: background-position 0.5s ease;
+        }
+
+        .enquire-button:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .enquire-button:hover::after {
+            background-position: right center;
+        }
+
+        .max-opportunity-logo {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            background: linear-gradient(90deg, #4A90E2, #81C7F4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-family: var(--font-cursive);
+            font-style: italic;
+            line-height: 1.2;
+        }
+
+        .stats-bar {
+            background-color: var(--container-bg);
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+            padding: 1.5rem;
+            width: 100%;
+            margin-top: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 0;
+            justify-content: center;
+        }
+
+        .stat-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: var(--font-cursive);
+            font-style: italic;
+        }
+
+        /* Learn Section */
+        .learn-section {
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin: 4rem 0;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .learn-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+            color: var(--text-color);
+            line-height: 1.3;
+        }
+
+        .learn-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .learn-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+
+        .learn-item {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .learn-item::before {
+            content: '✓';
+            color: var(--gradient-start);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 0.75rem;
+            line-height: 1;
+        }
+
+        .learn-section .enquire-button {
+            margin-bottom: 0;
+        }
+
+
+        /* Learning By Doing Section */
+        .learning-by-doing-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .learning-by-doing-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .learning-by-doing-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .learning-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 1.5rem;
+            align-items: stretch;
+            text-align: left;
+        }
+
+        .learning-card {
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .learning-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .learning-card .underline-text {
+            position: relative;
+            display: inline-block;
+            font-family: var(--font-cursive);
+            font-style: italic;
+        }
+
+        .learning-card .underline-text::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .gradient-underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        .gradient-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .learning-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        /* Left Column - Video Card */
+        .video-card {
+            justify-content: space-between;
+        }
+
+        .coach-image-container {
+            margin-top: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .coach-image-container img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Right Column */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ad-budget-card .ad-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .ad-budget-card .ad-stat-item {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .ad-budget-card .ad-stat-item strong {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .journey-button-container {
+            text-align: center;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .services-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .services-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .services-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .service-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(100, 125, 150, 0.1);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            background-color: var(--container-bg);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .service-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .service-tag {
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .service-tag:hover {
+            background-color: #4A90E2;
+            color: var(--bg-color);
+            border-color: #4A90E2;
+        }
+
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .faq-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .faq-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: left;
+            font-family: var(--font-primary);
+        }
+
+        .faq-icon {
+            width: 1em;
+            height: 1em;
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 2px;
+            background-color: var(--text-muted);
+            transform: translate(-50%, -50%);
+        }
+
+        .faq-icon::after {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px; /* Adjust if answers are longer */
+        }
+
+        /* Live Training Section */
+        .live-training-section {
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .live-training-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .live-training-image img {
+            width: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+
+        .live-training-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            text-align: left;
+        }
+
+        .live-training-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            line-height: 1.3;
+        }
+
+        .live-training-subtitle {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--gradient-start);
+            margin-top: -1rem; /* bring it closer to title */
+            font-family: var(--font-cursive);
+        }
+
+        .live-training-text p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .live-training-text strong {
+            color: var(--text-color);
+        }
+
+        .live-training-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0.5rem 0;
+        }
+
+        .live-training-list li {
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .live-training-list li::before {
+            content: '✓';
+            color: var(--gradient-start);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-right: 0.75rem;
+            line-height: 1;
+        }
+
+        .live-training-text .counsellor-button {
+            margin-top: 1rem;
+            align-self: flex-start; /* Align button to the left */
+            width: auto; /* Don't stretch the button */
+            padding: 1rem 2rem;
+        }
+
+        /* Footer */
+        .app-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 4rem;
+            margin-top: 4rem;
+            background-color: var(--container-bg);
+            margin-left: -1.5rem;
+            margin-right: -1.5rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            max-width: 1440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-about .logo {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 450px;
+        }
+
+        .footer-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .footer-details strong {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .footer-details a {
+            color: var(--gradient-start);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-details a:hover {
+            color: var(--gradient-end);
+            text-decoration: underline;
+        }
+
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            max-width: 1440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            #root {
+                padding: 1rem;
+            }
+            
+            .hero-content {
+                grid-template-areas:
+                    "title"
+                    "image"
+                    "text";
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .hero-text {
+                text-align: center;
+                align-items: center;
+            }
+
+            #hero-title {
+                font-size: 2.6rem;
+            }
+            
+            .info-cards {
+                margin-top: 1.5rem;
+            }
+            
+            .program-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .outcome-tags {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats-bar {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+            .stat-item {
+                flex-basis: 40%; /* Two items per row */
+            }
+
+            .learning-content-grid, .services-grid, .live-training-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-container, .program-for-section {
+                padding: 1.5rem;
+            }
+
+            #hero-title {
+                font-size: 2.2rem;
+            }
+
+            .features {
+                flex-direction: column;
+            }
+
+            .info-cards {
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+
+            .info-card {
+                padding: 1rem 0.5rem;
+                min-width: 110px;
+            }
+            
+            .info-main {
+                font-size: 1.8rem;
+            }
+
+            .program-for-title {
+                font-size: 2rem;
+            }
+            
+            .program-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .counsellor-button {
+                font-size: 1rem;
+            }
+
+            .outcome-section {
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+            }
+            .outcome-title, .learn-title {
+                font-size: 1.8rem;
+            }
+            .outcome-tags {
+                grid-template-columns: 1fr;
+            }
+            .max-opportunity-logo {
+                font-size: 3rem;
+            }
+            .stats-bar {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            .learn-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .learn-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .learning-by-doing-section, .services-section {
+                padding: 2rem 0;
+            }
+            .learning-by-doing-title,
+            .services-title,
+            .faq-title {
+                font-size: 2rem;
+            }
+            .learning-card {
+                padding: 1.5rem;
+            }
+            .learning-card h3 {
+                font-size: 1.5rem;
+            }
+            .ad-budget-card .ad-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-section {
+                padding: 2rem 0;
+            }
+            .faq-question {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+            .faq-answer p {
+                padding: 0 1rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .live-training-section {
+                padding: 1.5rem;
+            }
+            
+            .live-training-title {
+                font-size: 1.8rem;
+            }
+
+            .live-training-text .counsellor-button {
+                align-self: stretch; /* Make button full width on mobile */
+                width: 100%;
+            }
+
+            .app-footer {
+                margin-left: -1rem;
+                margin-right: -1rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-about .logo {
+                text-align: center;
+            }
+
+            .footer-description {
+                margin: 0 auto;
+            }
+
+            .footer-details {
+                text-align: center;
+            }
+
+        }
+        .daily-live{
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-top: 15px;
+        
+        }
+
+        /* Animations */
+        @keyframes shake {
+          from {
+            transform: translateX(-2px);
+          }
+          to {
+            transform: translateX(2px);
+          }
+        }
+
+        @keyframes grow-underline {
+          to {
+            width: 100%;
+          }
+        }
+
+        @keyframes running-shine {
+          0% {
+            left: -100%;
+          }
+          100% {
+            left: 150%;
+          }
+        }
+
+        @keyframes spin-border {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module">
+        import React, { useState, useEffect, useRef } from 'react';
+        import { createRoot } from 'react-dom/client';
+
+        const AnimatedNumber = ({ endValue, suffix = '', duration = 2000, isVisible }) => {
+            const [count, setCount] = useState(0);
+
+            useEffect(() => {
+                if (!isVisible) return;
+
+                let startTime;
+                let animationFrameId;
+
+                const animate = (timestamp) => {
+                    if (!startTime) startTime = timestamp;
+                    const progress = timestamp - startTime;
+                    const percentage = Math.min(progress / duration, 1);
+                    const currentCount = Math.floor(percentage * endValue);
+                    
+                    setCount(currentCount);
+
+                    if (percentage < 1) {
+                        animationFrameId = requestAnimationFrame(animate);
+                    }
+                };
+
+                animationFrameId = requestAnimationFrame(animate);
+
+                return () => {
+                    cancelAnimationFrame(animationFrameId);
+                };
+            }, [endValue, duration, isVisible]);
+
+            return React.createElement("span", { className: "info-main" }, count + suffix);
+        };
+
+        const programForData = [
+          {
+            image: 'https://wellnesscoachsahil.in/wp-content/uploads/2025/10/6.jpg',
+            caption: 'Disclaimer - this results is personal, Result may Vary person to person'
+          },
+          {
+            image: 'https://wellnesscoachsahil.in/wp-content/uploads/2025/10/5.jpg',
+            caption: 'Disclaimer - this results is personal, Result may Vary person to person'
+          },
+          {
+            image: 'https://wellnesscoachsahil.in/wp-content/uploads/2025/10/3.jpg',
+            caption: 'Disclaimer - this results is personal, Result may Vary person to person'
+          },
+          {
+            image: 'https://wellnesscoachsahil.in/wp-content/uploads/2025/10/4-Copy.jpg',
+            caption: 'Disclaimer - this results is personal, Result may Vary person to person'
+          },
+          {
+            image: 'https://wellnesscoachsahil.in/wp-content/uploads/2026/01/3.jpeg',
+            caption: 'Disclaimer - this results is personal, Result may Vary person to person'
+          },
+          {
+            image: 'https://wellnesscoachsahil.in/wp-content/uploads/2026/01/2.jpeg',
+            caption: 'Disclaimer - this results is personal, Result may Vary person to person'
+          },
+          {
+            image: 'https://wellnesscoachsahil.in/wp-content/uploads/2026/01/1.jpeg',
+            caption: 'Disclaimer - this results is personal, Result may Vary person to person'
+          }
+        ];
+
+        const faqData = [
+            {
+                question: "How is this program different from other diets I've tried?",
+                answer: "Our program isn't a generic, one-size-fits-all diet. It's a personalized coaching experience. We create a sustainable plan based on your unique body type, lifestyle, and food preferences, focusing on long-term habits, not just quick, temporary fixes."
+            },
+            {
+                question: "Do I have to do intense workouts to see results?",
+                answer: "While physical activity is beneficial, our primary focus is on a customized nutrition plan which is responsible for 80% of your results. We design plans that fit your current fitness level and lifestyle, so you don't need to spend hours in the gym to achieve your goals."
+            },
+            {
+                question: "What kind of food will I be eating? Is it boring?",
+                answer: "Absolutely not! We believe in a balanced and enjoyable diet. Your plan will include a variety of food options that you like. We'll teach you how to make healthy choices without sacrificing flavor, so you can enjoy your meals while losing weight."
+            },
+            {
+                question: "How do you keep me accountable and motivated?",
+                answer: "Accountability is key. You'll have weekly follow-ups and direct support from your personal diet assistant. We're here to track your progress, overcome challenges together, and provide the motivation you need to stay on track and celebrate your victories."
+            }
+        ];
+
+        const learnData = [
+            'Lose stubborn belly fat',
+            'Very simple diets & exercises',
+            'Increase energy',
+            'Improve strength and balance',
+            'Learn to work out from home',
+            'Reduce fat from love handles'
+        ];
+
+        const servicesData = [
+            {
+                image: 'https://dtpoonamsagar.com/wp-content/uploads/2024/06/WM-min.webp',
+                description: 'At Your Personal Coach, we understand that weight loss is a personal journey. Our customized programs support you in finding healthy habits that optimize both physical and mental well-being.',
+                tags: ['Weight Loss', 'Weight Gain']
+            },
+            {
+                image: 'https://dtpoonamsagar.com/wp-content/uploads/2024/06/DS-min.webp',
+                description: 'Managing chronic conditions like diabetes, thyroid issues, heart disease, or PCOS doesn’t mean giving up an active life. Our team offers tailored nutrition plans and healthy habits to empower you to live fully.',
+                tags: ['Thyroid', 'Diabetes', 'PCOD', 'Heart']
+            },
+            {
+                image: 'https://dtpoonamsagar.com/wp-content/uploads/2024/06/WCD-min.webp',
+                description: 'From pregnancy and lactation to postpartum and menopause, women deserve expert nutritional care. Your Personal Coach provides personalized plans to support women through life’s milestones.',
+                tags: ['Pregnancy', 'Postpartum', 'Lactation', 'Menopause']
+            }
+        ];
+
+        const liveTrainingData = {
+            image: 'https://indianfitnesscoach.com/images/livept.webp',
+            title: 'Live Virtual Personal Training',
+            subtitle: '1-on-1 Coaching with Indian Fitness Coach',
+            description: [
+                'Live Virtual Personal Training by Online fitness coach in India. Train 1-on-1 in real time with a certified online fitness coach in India - right from the comfort of your home. Get the guidance, motivation, and accountability you need to achieve lasting results.',
+                'With our live virtual personal training membership, a certified Indian Fitness Coach joins you on WhatsApp or Google Meet for 45 minutes - 1 hour session.',
+                'In every session, your trainer will:'
+            ],
+            benefits: [
+                'Check and correct your form in real time',
+                'Show you proper techniques and safe alternatives',
+                'Suggest mobility and flexibility drills for better performance',
+                'Push you to achieve your maximum potential in a safe, supportive way'
+            ],
+            cta: 'Book My Free Live Session'
+        };
+
+
+        const App = () => {
+            const [isInfoVisible, setIsInfoVisible] = useState(false);
+            const [openFaqIndex, setOpenFaqIndex] = useState(null);
+            const infoCardsRef = useRef(null);
+
+            const handleFaqToggle = (index) => {
+                setOpenFaqIndex(openFaqIndex === index ? null : index);
+            };
+
+            const redirectUrl = "https://tool.aiwhatsapp.in/calender/6292/859/30%20min";
+            const handleRedirect = () => {
+                window.location.href = redirectUrl;
+            };
+            
+            useEffect(() => {
+                const currentRef = infoCardsRef.current;
+                const observer = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            setIsInfoVisible(true);
+                            observer.unobserve(currentRef);
+                        }
+                    },
+                    { threshold: 0.1 } 
+                );
+
+                if (currentRef) {
+                    observer.observe(currentRef);
+                }
+
+                return () => {
+                    if (currentRef) {
+                        observer.unobserve(currentRef);
+                    }
+                };
+            }, []);
+
+            return (
+                React.createElement(React.Fragment, null,
+                    React.createElement("header", { className: "app-header" },
+                        React.createElement("div", { className: "logo" },
+                            "Wellness",
+                            React.createElement("span", { className: "subtitle" }, "India's no. 1 coach")
+                        )
+                    ),
+                    React.createElement("main", null,
+                        React.createElement("section", { className: "hero-container", "aria-labelledby": "hero-title" },
+                            React.createElement("div", { className: "hero-content" },
+                                React.createElement("div", { className: "hero-title-container" },
+                                    React.createElement("span", { className: "tag-ai" }, "5000+ Satisfied Clients"),
+                                    React.createElement("h1", { id: "hero-title" },
+                                        "Guaranteed Weight Loss",
+                                        React.createElement("span", { className: "cursive" }, " Upto 5 Kg in a Month")
+                                    )
+                                ),
+                                React.createElement("div", { className: "hero-text" },
+                                    React.createElement("p", { className: "description" },
+                                        "You\u2019ve ", React.createElement("span", { className: "highlight" }, "tried it all"), " \u2014 low calorie diets, endless cardio, supplements, fancy personal trainers, but your ", React.createElement("span", { className: "highlight" }, "weight (and belly fat)"), " still won\u2019t budge. Why? Because ", React.createElement("span", { className: "highlight" }, "one size fits all programs"), " can\u2019t deliver sustainable results. ", React.createElement("span", { className: "highlight" }, "Personalized coaching"), " does."
+                                    ),
+                                    React.createElement("div", { className: "features" },
+                                        React.createElement("span", { className: "feature-tag" }, "100% MoneyBack Guarantee")
+                                    ),
+                                    React.createElement("button", { className: "apply-button", onClick: handleRedirect }, "BOOK YOUR FREE CALL NOW!")
+                                ),
+                                React.createElement("div", { className: "hero-image" },
+                                    React.createElement("img", {
+                                        src: "https://growthcore.in/wp-content/uploads/2025/10/ChatGPT-Image-Oct-5-2025-07_16_45-PM.png",
+                                        alt: "A portrait of a wellness coach."
+                                    })
+                                )
+                            )
+                        ),
+                        React.createElement("section", { className: "info-cards", ref: infoCardsRef },
+                            React.createElement("div", { className: `info-card ${isInfoVisible ? 'visible' : ''}` },
+                                React.createElement(AnimatedNumber, { endValue: 98, suffix: "%", isVisible: isInfoVisible }),
+                                React.createElement("span", { className: "info-unit" }, "Success Rate")
+                            ),
+                            React.createElement("div", { className: `info-card ${isInfoVisible ? 'visible' : ''}`, style: { transitionDelay: '0.2s' } },
+                                React.createElement(AnimatedNumber, { endValue: 70, suffix: "K+", isVisible: isInfoVisible }),
+                                React.createElement("span", { className: "info-unit" }, "Total kgs lost by our customers")
+                            ),
+                            React.createElement("div", { className: `info-card ${isInfoVisible ? 'visible' : ''}`, style: { transitionDelay: '0.4s' } },
+                                React.createElement("span", { className: "info-main" }, "#1"),
+                                React.createElement("span", { className: "info-unit" }, "\u201cBusiness Achievers & News 18 Award\u201d")
+                            )
+                        ),
+                        React.createElement("hr", { className: "section-divider" }),
+                        React.createElement("section", { className: "program-for-section" },
+                            React.createElement("h2", { className: "program-for-title" },
+                                "Real People With ", React.createElement("i", null, "Real Result....")
+                            ),
+                            React.createElement("div", { className: "program-cards-grid" },
+                                programForData.map((card, index) => (
+                                    React.createElement("div", { className: "program-card", key: index },
+                                        React.createElement("img", { src: card.image, alt: card.caption }),
+                                        React.createElement("p", null, card.caption)
+                                    )
+                                ))
+                            ),
+                            React.createElement("button", { className: "counsellor-button", onClick: handleRedirect },
+                                "Book Your Free Consultation Now"
+                            )
+                        ),
+                        React.createElement("section", { className: "outcome-section" },
+                            React.createElement("h2", { className: "outcome-title" }, "What do you get?"),
+                            React.createElement("div", { className: "outcome-tags" },
+                                React.createElement("div", { className: "tag-item" }, "Sustainable Weight Management"),
+                                React.createElement("div", { className: "tag-item" }, "Weekly Follow-ups"),
+                                React.createElement("div", { className: "tag-item" }, "Personal Diet Assistant"),
+                                React.createElement("div", { className: "tag-item" }, "Multiple Food Options"),
+                                React.createElement("div", { className: "tag-item" }, "Lifestyle-based Curated Diet Plans"),
+                                React.createElement("div", { className: "tag-item" }, "Guaranteed Results")
+                            ),
+                            React.createElement("button", { className: "enquire-button", onClick: handleRedirect }, "Get Personalized Plan"),
+                            React.createElement("div", { className: "max-opportunity-logo" }, "Healthy Weight Lose"),
+                            React.createElement("div", { className: "stats-bar" },
+                                React.createElement("div", { className: "stat-item" },
+                                    React.createElement("span", { className: "stat-number" }, "8+ Years"),
+                                    React.createElement("span", { className: "stat-label" }, "Experience")
+                                ),
+                                React.createElement("div", { className: "stat-item" },
+                                    React.createElement("span", { className: "stat-number" }, "2500+"),
+                                    React.createElement("span", { className: "stat-label" }, "hours of training")
+                                ),
+                                React.createElement("div", { className: "stat-item" },
+                                    React.createElement("span", { className: "stat-number" }, "2000+"),
+                                    React.createElement("span", { className: "stat-label" }, "Trained")
+                                ),
+                                React.createElement("div", { className: "stat-item" },
+                                    React.createElement("span", { className: "stat-number" }, "5+"),
+                                    React.createElement("span", { className: "stat-label" }, "award winnings")
+                                ),
+                                React.createElement("div", { className: "stat-item" },
+                                    React.createElement("span", { className: "stat-number" }, "200+"),
+                                    React.createElement("span", { className: "stat-label" }, "daily visit")
+                                )
+                            )
+                        ),
+                        React.createElement("section", { className: "learn-section" },
+                            React.createElement("h2", { className: "learn-title" }, "In these 30-minutes you will learn"),
+                            React.createElement("div", { className: "learn-grid" },
+                                learnData.map((item, index) => (
+                                    React.createElement("div", { className: "learn-item", key: index }, item)
+                                ))
+                            ),
+                            React.createElement("button", { className: "enquire-button", onClick: handleRedirect }, "Get Personalized Plan")
+                        ),
+                        React.createElement("section", { className: "learning-by-doing-section" },
+                            React.createElement("h2", { className: "learning-by-doing-title" }, "Meet Your Personal Coach"),
+                            React.createElement("div", { className: "learning-content-grid" },
+                                React.createElement("div", { className: "learning-card video-card" },
+                                    React.createElement("h3", null, React.createElement("span", { className: "underline-text" }, "Sahil Agrawal")),
+                                    React.createElement("p", null, "Hey, I\u2019m Sahil Agrawal \u2014 your health coach and transformation partner."),
+                                    React.createElement("div", { className: "coach-image-container" },
+                                        React.createElement("img", {
+                                            src: "https://wellnesscoachsahil.in/wp-content/uploads/2025/10/1-Copy-scaled.jpg",
+                                            alt: "Sahil Agrawal, personal coach"
+                                        })
+                                    )
+                                ),
+                                React.createElement("div", { className: "right-column" },
+                                    React.createElement("div", { className: "learning-card ad-budget-card" },
+                                        React.createElement("h3", null, React.createElement("span", { className: "underline-text" }, "About")),
+                                        React.createElement("p", null, "With a passion for health and fitness that spans over a decade, Our helped countless individuals achieve their weight loss goals. Our extensive knowledge, combined with a compassionate and motivational approach, has empowered our clients to make lasting changes in their lives."),
+                                        React.createElement("div", { className: "ad-stats" },
+                                            React.createElement("div", { className: "ad-stat-item" }, "Lives Transformed ", React.createElement("strong", null, "5000+")),
+                                            React.createElement("div", { className: "ad-stat-item" }, "Years of Experience ", React.createElement("strong", null, "8+")),
+                                            React.createElement("div", { className: "ad-stat-item" }, "Health Certifications ", React.createElement("strong", null, "15+")),
+                                            React.createElement("div", { className: "ad-stat-item" }, "Client Success Rate ", React.createElement("strong", null, "98%"))
+                                        ),
+                                        React.createElement("div", {className: "daily-live"}, 
+                                            React.createElement("div", { className: "ad-stat-item" }, "Daily Visit ", React.createElement("strong", null, "200+"))
+                                    
+                                )
+                                    ),
+                                    React.createElement("div", { className: "learning-card real-business-card" },
+                                        React.createElement("h3", null, "Why Choose Us as Your ", React.createElement("span", { className: "underline-text" }, "Weight Loss Coach?")),
+                                        React.createElement("p", null,
+                                            React.createElement("strong", null, React.createElement("span", { className: "gradient-underline" }, "Personalised Approach:")), " We understand that one size does not fit all when it comes to weight loss. We will work closely with you to create a tailored plan that suits your unique needs, lifestyle, and goals.",
+                                            React.createElement("br", null), React.createElement("br", null),
+                                            React.createElement("strong", null, React.createElement("span", { className: "gradient-underline" }, "Expert Guidance:")), " Our expertise in nutrition, exercise, and behaviour change will provide you with the knowledge and tools necessary to make sustainable, healthy choices.",
+                                            React.createElement("br", null), React.createElement("br", null),
+                                            React.createElement("strong", null, React.createElement("span", { className: "gradient-underline" }, "Accountability:")), " We will establish clear goals and milestones together, and We will be your steadfast partner in tracking your progress and keeping you on the path to success.",
+                                            React.createElement("br", null), React.createElement("br", null),
+                                            React.createElement("strong", null, React.createElement("span", { className: "gradient-underline" }, "Motivation:")), " We are here to inspire and motivate you, even on those tough days. Together, we will overcome challenges and celebrate your victories, no matter how small they may seem."
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        React.createElement("div", { className: "journey-button-container" },
+                            React.createElement("button", { className: "counsellor-button", onClick: handleRedirect }, "Start Your Journey Today")
+                        ),
+                        React.createElement("section", { className: "services-section" },
+                            React.createElement("h2", { className: "services-title" }, "Our Services"),
+                            React.createElement("p", { className: "services-subtitle" }, "Programs offered by Your Personal Coach"),
+                            React.createElement("div", { className: "services-grid" },
+                                servicesData.map((service, index) => (
+                                    React.createElement("div", { className: "service-card", key: index },
+                                        React.createElement("img", { src: service.image, alt: "Illustration for our health programs", className: "service-image" }),
+                                        React.createElement("div", { className: "service-content" },
+                                            React.createElement("p", { className: "service-description" }, service.description),
+                                            React.createElement("div", { className: "service-tags" },
+                                                service.tags.map((tag, tagIndex) => (
+                                                    React.createElement("span", { className: "service-tag", key: tagIndex }, tag, " >")
+                                                ))
+                                            )
+                                        )
+                                    )
+                                ))
+                            )
+                        ),
+                        React.createElement("section", { className: "live-training-section" },
+                            React.createElement("div", { className: "live-training-content" },
+                                React.createElement("div", { className: "live-training-image" },
+                                    React.createElement("img", { src: liveTrainingData.image, alt: "Live virtual personal training session" })
+                                ),
+                                React.createElement("div", { className: "live-training-text" },
+                                    React.createElement("h2", { className: "live-training-title" }, liveTrainingData.title),
+                                    React.createElement("p", { className: "live-training-subtitle" }, liveTrainingData.subtitle),
+                                    liveTrainingData.description.map((p, i) => React.createElement("p", { key: i }, p)),
+                                    React.createElement("ul", { className: "live-training-list" },
+                                        liveTrainingData.benefits.map((item, index) => (
+                                            React.createElement("li", { key: index }, item)
+                                        ))
+                                    ),
+                                    React.createElement("p", null, React.createElement("strong", null, "Start training with a certified India fitness coach today!")),
+                                    React.createElement("button", { className: "counsellor-button", onClick: handleRedirect }, liveTrainingData.cta)
+                                )
+                            )
+                        ),
+                        React.createElement("section", { className: "faq-section" },
+                            React.createElement("h2", { className: "faq-title" }, "Frequently Asked Questions"),
+                            React.createElement("div", { className: "faq-container" },
+                                faqData.map((faq, index) => (
+                                    React.createElement("div", { className: `faq-item ${openFaqIndex === index ? 'open' : ''}`, key: index },
+                                        React.createElement("button", { className: "faq-question", onClick: () => handleFaqToggle(index), "aria-expanded": openFaqIndex === index },
+                                            React.createElement("span", null, faq.question),
+                                            React.createElement("span", { className: "faq-icon" })
+                                        ),
+                                        React.createElement("div", { className: "faq-answer" },
+                                            React.createElement("p", null, faq.answer)
+                                        )
+                                    )
+                                ))
+                            )
+                        )
+                    ),
+                    React.createElement("footer", { className: "app-footer" },
+                        React.createElement("div", { className: "footer-content" },
+                            React.createElement("div", { className: "footer-about" },
+                                React.createElement("div", { className: "logo" },
+                                    "Wellness",
+                                    React.createElement("span", { className: "subtitle" }, "India's no. 1 coach")
+                                ),
+                                React.createElement("p", { className: "footer-description" }, "We, at Indian Nutritionist, are dedicated to empowering individuals with the expertize of our experienced nutritionists. Our personalized diet plans and expert nutritional counseling are designed to support you every step of the way. Experience the transformative power of personalized nutrition today.")
+                            ),
+                            React.createElement("div", { className: "footer-details" },
+                                React.createElement("p", null, React.createElement("strong", null, "Founder & Head Nutritionist:"), React.createElement("br", null), "Sahil Agrawal")
+                               
+                            )
+                        ),
+                        React.createElement("div", { className: "footer-bottom" },
+                            React.createElement("p", null, "\u00a9 2025 Indian Wellness. All rights reserved.")
+                        )
+                    )
+                )
+            );
+        };
+
+        const container = document.getElementById('root');
+        if (container) {
+            const root = createRoot(container);
+            root.render(React.createElement(App));
+        }
+    </script>
+</body>
+</html>
