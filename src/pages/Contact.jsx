@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-
 import "../App.css";
 import Second_sec from '../components/Second_sec';
 
@@ -8,18 +7,12 @@ const Contact = () => {
 
    const form = useRef();
 
-   const service_id = 'service_wm67b5o'
-   const template_id = 'template_pj5khr9'
-   const public_key = 'YmkGYgOB5UDHO8GQB'
-   const ownerName = 'Rahul'
-   const owneEmail = 'rahulsingh85064@gmail.com'
-
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
-      .sendForm(service_id, template_id, form.current, {
-        publicKey: public_key,
+      .sendForm(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, form.current, {
+        publicKey: import.meta.env.VITE_PUBLIC_KEY,
       })
       .then(
         () => {
@@ -40,8 +33,8 @@ const Contact = () => {
       <div className='contact-div'>
        
           <form className='form'  ref={form} onSubmit={sendEmail}>
-            <input type="hidden" name="to_name" value={ownerName} />
-            <input type="hidden" name="to_email" value={owneEmail} />
+            <input type="hidden" name="to_name" value={import.meta.env.VITE_OWNER_NAME} />
+            <input type="hidden" name="to_email" value={import.meta.env.VITE_OWNER_EMAIL} />
 
             <div className='contact-input-div'>
               <label htmlFor="name">Name</label>
