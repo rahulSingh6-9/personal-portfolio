@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Right Side Premium Sidebar</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  overflow-x: hidden;
+}
+
+/* Menu Button */
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 270px;
+  height: 100%;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+  transition: 0.4s ease;
+  z-index: 1000;
+}
+
+.sidebar h2 {
+  color: #fff;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Menu Items */
+.sidebar a {
+  display: block;
+  padding: 14px;
+  margin-bottom: 12px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateX(-5px);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+/* Active States */
+.sidebar.active {
+  right: 0;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Hamburger animation */
+.menu-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Demo content */
+.content {
+  color: #fff;
+  text-align: center;
+  margin-top: 40vh;
+  font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Menu Button -->
+<div class="menu-btn" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" onclick="toggleMenu()"></div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2>My App</h2>
+  <a href="#">🏠 Home</a>
+  <a href="#">👤 Profile</a>
+  <a href="#">📊 Dashboard</a>
+  <a href="#">⚙ Settings</a>
+  <a href="#">🚪 Logout</a>
+</div>
+
+<!-- Page Content -->
+<div class="content">
+  Swipe / Tap ☰ for Menu
+</div>
+
+<script>
+function toggleMenu() {
+  document.querySelector(".sidebar").classList.toggle("active");
+  document.querySelector(".overlay").classList.toggle("active");
+  document.querySelector(".menu-btn").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

@@ -2,7 +2,7 @@ import { BrowserRouter, Link } from "react-router-dom";
 import ToggleBar from "./Togglebar";
 import "./components.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
-import profilephoto from "../pages/image/14672844.jpg";
+import profilephoto from "../pages/image/rahul Image2.jpeg";
 import { CiMobile3 } from "react-icons/ci";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
 import { useState, useEffect } from "react";

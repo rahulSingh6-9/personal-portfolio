@@ -4,7 +4,7 @@ const SkillBaritems = ({name, width}) =>{
     return(
             <>
               <div className='skill-meter'>
-                <p className="fire-text">{name}</p>
+                <p className="para fire-text">{name}</p>
                    <div className='bar'>
                     <div className='fill' style={{width}}></div>
                     <span>{width}</span>

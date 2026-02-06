@@ -1,7 +1,7 @@
 import React from 'react'
 import Second_sec from '../components/Second_sec';
 import { Link } from "react-router-dom";
-import profilephoto from "./image/14672844.jpg";
+import profilephoto from "./image/rahul Image2.jpeg";
 import "../App.css";
 
 //icons
@@ -50,7 +50,7 @@ const About = () => {
                   <a href="https://www.linkedin.com/in/rahul-singh-b47257326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
                     <FaLinkedinIn />
                   </a>
-                  <a href="" target="_blank">
+                  <a href="https://github.com/rahulSingh6-9" target="_blank">
                     <FaGithub />
                   </a>
                   <a href='https://wa.me/+919001685064'>
@@ -58,9 +58,6 @@ const About = () => {
                   </a>
                   <a href="https://www.instagram.com/rj.heres/profilecard/?igsh=NTVyMDY3dWtzdTB6" target="_blank">
                     <FaInstagram />
-                  </a>
-                  <a href="#" target="_blank">
-                    <FaFacebookF />
                   </a>
                 </div>
               </div>
@@ -74,8 +71,9 @@ const About = () => {
                   
                     <Link to="/project"><button class="button projects-btn">Project</button></Link>      
                   </div>
-                <p className='para'>Hi, I’m <span className='blue-text'>Rahul Singh</span> — a web developer currently pursuing a Bachelor’s in Computer Applications (BCA). I’m passionate about building modern, responsive, and user-friendly websites while learning new technologies every day to strengthen my development skills.</p>
-                <p className='para'>Hi, I’m Rahul Singh — a web developer currently pursuing a Bachelor’s in Computer Applications (BCA). I’m passionate about building modern, responsive, and user-friendly websites while learning new technologies every day to strengthen my development skills.</p>
+                <p className='para'>Hi, I’m <span className='para blue-gloww'>Rahul Singh</span> — a web developer currently pursuing a <span className='para blue-gloww'>Bachelor’s in Computer Applications (BCA)</span>. I’m passionate about building modern, responsive, and user-friendly websites while learning new technologies every day to strengthen my development skills.</p>
+                <p className='para'>I’m currently exploring Node.js, Express, and databases, with a strong focus on writing clean, maintainable code and building scalable full-stack applications <span className='para blue-gloww'>using HTML, CSS, JavaScript, React, Node.js, MySQL, and Git</span>, while working toward a stable and growth-oriented role as a full-stack developer.</p>
+                
               </div>
             </div>
           </section>

@@ -1,53 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./components.css";
-import { AiOutlineProject } from "react-icons/ai";
-import { PiReadCvLogoBold } from "react-icons/pi";
-import { IoMdContact } from "react-icons/io";
-import { IoMdHome } from "react-icons/io";
-import { PiReadCvLogoFill } from "react-icons/pi";
 
+const ToggleBar = () => {
+  const [open, setOpen] = useState(false);
 
+  return (
+    <>
+      {/* Hamburger Button */}
+      <div
+        className={`menu-btn ${open ? "active" : ""}`}
+        onClick={() => setOpen(!open)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
+      {/* Overlay */}
+      <div
+        className={`overlay ${open ? "active" : ""}`}
+        onClick={() => setOpen(false)}
+      ></div>
 
-const ToggleBar = () => (
-  <>
+      {/* Sidebar */}
+      <div className={`sidebar ${open ? "active" : ""}`}>
+        <h2>My Portfolio</h2>
 
-    {/* 🔹 Navigation Menu */}
+        <Link to="/" onClick={() => setOpen(false)}>
+          🧑‍💻 About Me
+        </Link>
 
-   <label>
-    <input className="toggle-input" type="checkbox" />
-    
-    
+        <Link to="/resume" onClick={() => setOpen(false)}>
+          📄 Resume
+        </Link>
 
+        <Link to="/project" onClick={() => setOpen(false)}>
+          🚀 Projects
+        </Link>
 
-    <div className="slide">
-      <div className="toggle">
-      
-      <span className="top_line common"></span>
-      <span className="middle_line common"></span>
-      <span className="bottom_line common"></span>
-    </div>
-      <ul>
-        {/* ✅ Use <Link> instead of <a> */}
-        <li><Link to="/">
-         <IoMdHome className="slide-icon"/>
-          <h4>About Me</h4></Link></li>
-        <li><Link to="/resume">
-         <PiReadCvLogoFill className="slide-icon" />
-          <h4>resume</h4></Link></li>
-        <li><Link to="/project">
-          <IoMdContact className="slide-icon" />
-
-          <h4>projects</h4></Link></li>
-        <li><Link to="/contact">
-          <IoMdContact className="slide-icon"/>
-          <h4>contact</h4></Link></li>
-      </ul>
-    </div>
-   </label>
-
-  </>
-);
+        <Link to="/contact" onClick={() => setOpen(false)}>
+          📬 Contact
+        </Link>
+      </div>
+    </>
+  );
+};
 
 export default ToggleBar;

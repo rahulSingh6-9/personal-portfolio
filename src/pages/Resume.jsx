@@ -1,6 +1,6 @@
-import React from 'react';
 import "../App.css";
-import profileimage from "./image/14672844.jpg";
+import wingsflyimg from "./image/wingsfly.jpeg";
+
 import highschool from "../assets/vecteezy_school_1200587.png";
 import coding from "../assets/lcd-icon-vector.jpg";
 import Second_sec from '../components/Second_sec';
@@ -14,7 +14,7 @@ import { MdOutlineDownloading } from "react-icons/md";
 // ExperienceData array
 const ExperienceData = [
   {
-    image: profileimage,
+    image: wingsflyimg,
     alt: "img1",
     date: "sept 2025 - present",
     post: "web developer & technical supporter",
@@ -27,7 +27,7 @@ const ExperienceData = [
     ]
   },
   {
-    image: profileimage,
+   
     alt: "img1",
     date: "switch.. ",
 
@@ -62,7 +62,7 @@ const EducationData = [
     location: "kota, rajasthan",
   },
   {
-    image: profileimage,
+  
     alt: "Image",
     qualification: "bachelor of computer application",
     institute: "modi institute of management & technology",
@@ -78,16 +78,16 @@ const EducationData = [
 // SkillBarData 
 const SkillBarData = [
   {
-    name: "HTML, CSS",
+    name: "HTML, CSS, JS",
     width: "75%",
   },
   {
-    name: "JavaScript",
-    width: "45%",
+    name: "react",
+    width: "60%",
   },
   {
-    name: "react",
-    width: "45%",
+    name: "NodeJS & Express",
+    width: "65%"
   },
   {
     name: "SQL",
@@ -155,20 +155,15 @@ const Resume = () => {
             <div className='heading-div'><h3>professional skillset</h3></div>
             <div className='skill-img'>
               <div className='skill-info'>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita aliquid vitae ducimus temporibus. Amet
-                  eveniet, rerum sit odit recusandae officiis nulla! Minus, numquam earum beatae porro necessitatibus cum omnis rem?</p>
+                <p>I work with <span class="blue-glow">C programming</span> and full-stack web development, using <span class="blue-glow">HTML, CSS, JavaScript, React</span> on the frontend and  
+                   <span class="blue-glow"> Node.js</span> with <span class="blue-glow">Express</span> on the backend. I also handle <span class="blue-glow">databases using MySQ</span>L. I like turning ideas into real projects, learning new 
+                   technologies, and improving my skills by actually building things.</p>
+                
               </div>
               <SkillBar data={SkillBarData} />
             </div>
 
 
-          </div>
-          <div className='card language'>
-            <div className='heading-div'><h3>languages</h3></div>
-            <div className='highlight'>
-              <p>english</p>
-              <p>hindi</p>
-            </div>
           </div>
 
         </div>
