@@ -6,6 +6,7 @@ import coding from "../assets/lcd-icon-vector.jpg";
 import Second_sec from '../components/Second_sec';
 import Timeline from '../components/Timeline';
 import SkillBar from '../components/SkillBar';
+import CV from './image/RahulSingh.pdf'
 import { MdOutlineDownloading } from "react-icons/md";
 
 
@@ -60,17 +61,6 @@ const EducationData = [
     class2: "Semester 2",
     percentage2: "CGPA: 8.3",
     location: "kota, rajasthan",
-  },
-  {
-  
-    alt: "Image",
-    qualification: "bachelor of computer application",
-    institute: "modi institute of management & technology",
-    year: "2025 - 2026",
-    class1: "Semester 3",
-    percentage1: "Ongoing",
-
-    location: "kota, rajasthan",
   }
 
 ]
@@ -106,7 +96,7 @@ const Resume = () => {
         <div className='card-div'>
           <h1 className='resume-name'>resume</h1>
           <div className="cv-wrapper">
-            <a href="/cv.pdf" download className="download-cv">
+            <a href={CV} download className="download-cv">
              <MdOutlineDownloading className='downloadIcon' />
               Download CV
             </a>

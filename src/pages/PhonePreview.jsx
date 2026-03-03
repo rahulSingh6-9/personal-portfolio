@@ -16,8 +16,8 @@ const PhonePreview = ({ mobileMode }) => {
   };
 
   const framestyle ={
-    width: "400px",
-    height: "640px",
+    width: "340px",
+    height: "550px",
     display: mobileMode ? "block" : "none",
     overflow: "hidden",
   };

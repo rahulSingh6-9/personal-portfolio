@@ -2,9 +2,9 @@ import React from 'react';
 
 //icons
 import { FaInstagram } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
 import { MdMarkEmailRead } from "react-icons/md";
 
@@ -30,15 +30,16 @@ const Second_sec = () => {
             <a href="https://www.linkedin.com/in/rahul-singh-b47257326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
               <FaLinkedinIn />
             </a>
-            <a href="" target="_blank">
+            <a href="https://github.com/rahulSingh6-9" target="_blank">
               <FaGithub />
+            </a>
+            <a href='https://wa.me/+919001685064'>
+              <FaWhatsapp />
             </a>
             <a href="https://www.instagram.com/rj.heres/profilecard/?igsh=NTVyMDY3dWtzdTB6" target="_blank">
               <FaInstagram />
             </a>
-            <a href="#" target="_blank">
-              <FaFacebookF />
-            </a>
+            
           </div>
         </div>
         <div class="last-div">

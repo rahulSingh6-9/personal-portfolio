@@ -1,4 +1,3 @@
-import React from 'react'
 import Second_sec from '../components/Second_sec';
 import { Link } from "react-router-dom";
 import profilephoto from "./image/rahul Image2.jpeg";
@@ -6,7 +5,6 @@ import "../App.css";
 
 //icons
 import { FaInstagram } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
@@ -20,7 +18,7 @@ const About = () => {
     <>
     <section class="sec-first">
             {/* <div class="profession-div">
-              <h2 class="sec-name">Rahul Singh</h2>
+              <h2 class="sec-name">{import.meta.env.Name}</h2>
               <p class="sec-profession">Wep Developer</p>
             </div> */}
 
@@ -64,15 +62,15 @@ const About = () => {
 
               <div class="intro">
                 <h2>hello</h2>
-                <p className='para fire-text'>Heres's who I am & what I do</p>
+                <p className='About-para fire-textt'>Heres's who I am & what I do</p>
 
                 <div class="btn btn-pc">
                     <Link to="/resume"><button class="button resume-btn">Resume</button></Link>    
                   
                     <Link to="/project"><button class="button projects-btn">Project</button></Link>      
                   </div>
-                <p className='para'>Hi, I’m <span className='para blue-gloww'>Rahul Singh</span> — a web developer currently pursuing a <span className='para blue-gloww'>Bachelor’s in Computer Applications (BCA)</span>. I’m passionate about building modern, responsive, and user-friendly websites while learning new technologies every day to strengthen my development skills.</p>
-                <p className='para'>I’m currently exploring Node.js, Express, and databases, with a strong focus on writing clean, maintainable code and building scalable full-stack applications <span className='para blue-gloww'>using HTML, CSS, JavaScript, React, Node.js, MySQL, and Git</span>, while working toward a stable and growth-oriented role as a full-stack developer.</p>
+                <p className='About-para'>Hi, I’m <span className='blue-gloww'>{import.meta.env.Name}</span> — a web developer currently pursuing a <span className='blue-gloww'>Bachelor’s in Computer Applications (BCA)</span>. I’m passionate about building modern, responsive, and user-friendly websites while learning new technologies every day to strengthen my development skills.</p>
+                <p className='About-para'>I’m currently exploring Node.js, Express, and databases, with a strong focus on writing clean, maintainable code and building scalable full-stack applications <span className='blue-gloww'>using HTML, CSS, JavaScript, React, Node.js, MySQL, and Git</span>, while working toward a stable and growth-oriented role as a full-stack developer.</p>
                 
               </div>
             </div>
