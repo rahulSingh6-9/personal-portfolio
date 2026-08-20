@@ -28,19 +28,19 @@ const ToggleBar = () => {
         <h2>My Portfolio</h2>
 
         <Link to="/" onClick={() => setOpen(false)}>
-          🧑‍💻 About Me
+           About Me
         </Link>
 
         <Link to="/resume" onClick={() => setOpen(false)}>
-          📄 Resume
+         Resume
         </Link>
 
         <Link to="/project" onClick={() => setOpen(false)}>
-          🚀 Projects
+          Projects
         </Link>
 
         <Link to="/contact" onClick={() => setOpen(false)}>
-          📬 Contact
+         Contact
         </Link>
       </div>
     </>

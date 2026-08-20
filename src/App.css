@@ -42,10 +42,10 @@
   position: relative;
   width: 340px;
   height: 40px;
-  background-color: #363333;
+  background-color: #ffffff;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  /* box-shadow: 0 -10px 25px 1px black; */
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .mobileSec::after {
@@ -53,11 +53,10 @@
   position: relative;
   width: 340px;
   height: 40px;
-  background-color: #363333;
+  background-color: #ffffff;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
- /* border: 5px solid rgba(0, 0, 0, 0.06); */
-  /* box-shadow: 0 10px 20px 3px black; */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 #mobileIframe {
@@ -443,15 +442,18 @@ overflow: hidden;
 .institute-div {
   display: flex;
   align-items: center;
-  text-align: center;
+  
   justify-content: center;
 }
 
-.education-box h2 {
-  color: blue;
-  font-size: 18px;
+.education-box h5 {
+  color: #333;
+  font-size: 15px;
   font-weight: 900;
   text-transform: uppercase;
+}
+.education-box span{
+  color: blue;
 }
 
 .class1-div,
@@ -677,6 +679,10 @@ h3 {
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 4px;
+  width: 100px;
+  min-width: 100px;
+  flex-shrink: 0;
+  text-align: left;
 }
 
 /* ---- INPUT ---- */
@@ -861,7 +867,7 @@ h3 {
   }
 
   .About-para {
-    font-size: 10px;
+    font-size: 15px;
   }
 
   /*resume page*/

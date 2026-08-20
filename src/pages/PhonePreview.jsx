@@ -20,6 +20,7 @@ const PhonePreview = ({ mobileMode }) => {
     height: "550px",
     display: mobileMode ? "block" : "none",
     overflow: "hidden",
+    boxShadow: "0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.3)",
   };
 
   return (

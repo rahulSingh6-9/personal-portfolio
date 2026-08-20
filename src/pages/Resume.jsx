@@ -7,7 +7,7 @@ import Second_sec from '../components/Second_sec';
 import Timeline from '../components/Timeline';
 import SkillBar from '../components/SkillBar';
 import CV from './image/RahulSingh.pdf'
-import { MdOutlineDownloading } from "react-icons/md";
+import { MdOutlineDownloading, MdLocationOn, MdCalendarToday } from "react-icons/md";
 
 
 
@@ -17,7 +17,7 @@ const ExperienceData = [
   {
     image: wingsflyimg,
     alt: "img1",
-    date: "sept 2025 - present",
+    date: "sept 2025 - feb 2026",
     post: "web developer & technical supporter",
     company: "wingSFLY",
     location: "rajasthan",
@@ -30,7 +30,7 @@ const ExperienceData = [
   {
    
     alt: "img1",
-    date: "switch.. ",
+    date: ".... ",
 
   },
 ];
@@ -40,30 +40,26 @@ const ExperienceData = [
 const EducationData = [
   {
     image: highschool,
-    alt: "Image",
+    alt: "High School",
     qualification: "high school",
     institute: "central public school",
-    year: "2022 - 2023",
-    class1: "11th",
-    percentage1: "Percentage: 65%",
-    class2: "12th",
-    percentage2: "Percentage: 76.6%",
     location: "kota, rajasthan",
+    year: "2022 - 2024",
+    board: "RBSE",
+    subject: "Mathematics",
   },
   {
     image: coding,
-    alt: "Image",
-    qualification: "bachelor of computer application",
+    alt: "Bachelor Degree",
+    qualification: "bachelor degree",
     institute: "modi institute of management & technology",
-    year: "2024 - 2025",
-    class1: "Semester 1",
-    percentage1: "CGPA: 8.8",
-    class2: "Semester 2",
-    percentage2: "CGPA: 8.3",
+    bachelors: "bachelor of computer application",
     location: "kota, rajasthan",
-  }
-
-]
+    year: "2024 - 2027",
+    status: "Currently Pursuing",
+    cgpa: "8.30",
+  },
+];
 
 // SkillBarData 
 const SkillBarData = [
@@ -80,7 +76,7 @@ const SkillBarData = [
     width: "65%"
   },
   {
-    name: "SQL",
+    name: "SQL, MongoDB",
     width: "50%",
   },
   {
@@ -109,7 +105,7 @@ const Resume = () => {
 
           </div>
           <div className="card education">
-            <div className='heading-div'><h3>qualification</h3></div>
+            <div className='heading-div'><h3>Education</h3></div>
             <div className='education-timeline'>
               {EducationData.map((item, index) => (
                 <div className='education-box-div' key={index}>
@@ -120,19 +116,48 @@ const Resume = () => {
 
                   <div className='education-box'>
                     <img src={item.image} alt={item.alt} />
-                    <div className='institute-div'> <h2>{item.institute}</h2></div>
-                    <div>
-                      <h4>{item.class1}</h4>
-                      <div className='class1-div highlight'>
-                        <p>{item.percentage1}</p>
+                    <div className='institute-div'> <h5><span style={{ color: 'blue' }}>Institute:</span> {item.institute}</h5></div>
+                    
+                    {item.bachelors && (
+                      <div style={{ marginTop: '5px' }}>
+                        <h4 style={{ textTransform: 'capitalize', fontSize: '15px', color: '#333' }}><span style={{ color: 'blue' }}>Bachelors:</span> {item.bachelors}</h4>
+                      </div>
+                    )}
+
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '15px 0', paddingLeft: index % 2 === 1 ? '45px' : '0', paddingRight: index % 2 === 0 ? '45px' : '0' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                        <MdLocationOn style={{ fontSize: '18px', color: '#1a1919' }} />
+                        <span style={{ textTransform: 'capitalize', fontSize: '14px', fontWeight: '600', color: '#1a1919' }}>{item.location}</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                        <MdCalendarToday style={{ fontSize: '16px', color: '#1a1919' }} />
+                        <span style={{ fontSize: '14px', fontWeight: '600', color: '#1a1919' }}>{item.year}</span>
                       </div>
                     </div>
-                    <div>
-                      <h4>{item.class2}</h4>
-                      <div className='class2-div highlight'>
-                        <p>{item.percentage2}</p>
+
+                    {item.board && (
+                      <div>
+                        <h4 style={{ fontSize: '15px', color: '#333' }}><span style={{ color: 'blue' }}>Board:</span> {item.board}</h4>
                       </div>
-                    </div>
+                    )}
+
+                    {item.subject && (
+                      <div>
+                        <h4 style={{ textTransform: 'capitalize', fontSize: '15px', color: '#333' }}><span style={{ color: 'blue' }}>Subject:</span> {item.subject}</h4>
+                      </div>
+                    )}
+
+                    {item.status && (
+                      <div className='class1-div highlight' style={{ marginTop: '5px' }}>
+                        <p style={{ fontWeight: '600' }}>{item.status}</p>
+                      </div>
+                    )}
+
+                    {item.cgpa && (
+                      <div className='class1-div highlight' style={{ marginTop: '5px' }}>
+                        <p style={{ fontWeight: '600' }}>CGPA: {item.cgpa}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
