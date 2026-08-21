@@ -38,7 +38,7 @@ const Header = ({ mobileMode, setMobileMode }) => {
       <header className="header">
         <IoChevronBackCircleOutline className="back-btn" onClick={() => { window.history.back() }} />
         <div className="header-logo">
-          <img className="header-image" src={profilephoto} />
+          <img className="header-image" src="https://res.cloudinary.com/djgizjh2y/image/upload/v1787329961/rahul_Image4_ovvore.jpg" />
           <p className="header-name">Rahul Singh</p>
         </div>
         <div className="header-icon-div">

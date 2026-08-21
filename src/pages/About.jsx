@@ -26,7 +26,7 @@ const About = () => {
           <div class="card">
 
             <div class="img-div">
-              <img class="profile-img" src={profilephoto} alt="Profile Photo" />
+              <img class="profile-img" src="https://res.cloudinary.com/djgizjh2y/image/upload/v1787329961/rahul_Image4_ovvore.jpg" alt="Profile Photo" />
 
 
               <div class="circle"></div>

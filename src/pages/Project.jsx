@@ -8,15 +8,15 @@ import ProjectCard from '../components/ProjectCard';
 const ProjectCardData = [
   {
     title: "Contact Management System",
-    image: contact_img,
+    image: "https://res.cloudinary.com/djgizjh2y/image/upload/v1787330783/Screenshot_2026-08-21_221405_plmlai.png",
     description:
-      "A full-stack contact management system with admin panel, contact form, email notifications, and database integration. Built using Node.js, Express, and SQL.",
+      "A full-stack contact management system with admin panel, contact form, email notifications, and database integration. Built using Node.js, Express, and SupaBase.",
     tech: ["Nodejs", "Express", "SQL", "HTML", "CSS", "JavaScript"],
-    open_btn: "https://contact-management-system-app.up.railway.app/",
+    open_btn: "https://contact-management-system-beta.vercel.app/",
   },
   {
     title: "Rock Paper Scissors",
-    image: SPS_img,
+    image: "https://res.cloudinary.com/djgizjh2y/image/upload/v1787329359/SPSgame_rzxzuo.png",
     description:
       "Rock Paper Scissors Game built using HTML, CSS, and JavaScript featuring a modern UI, responsive design, real-time score tracking, and interactive gameplay against a computer opponent.",
     tech: ["HTML", "CSS", "JavaScript"],
