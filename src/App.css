@@ -605,7 +605,7 @@ h3 {
 .skill-img {
   display: flex;
   flex-direction: column;
-  background-image: url("./assets/skill-img.webp");
+  background-image: url("https://res.cloudinary.com/djgizjh2y/image/upload/v1787331123/skill-img_kki2tw.webp");
   width: 100%;
   background-size: cover;
   /* makes it cover full area */

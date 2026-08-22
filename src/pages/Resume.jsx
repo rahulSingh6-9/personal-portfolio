@@ -15,7 +15,7 @@ import { MdOutlineDownloading, MdLocationOn, MdCalendarToday } from "react-icons
 // ExperienceData array
 const ExperienceData = [
   {
-    image: wingsflyimg,
+    image: "https://res.cloudinary.com/djgizjh2y/image/upload/v1787331161/wingsfly_ti1w1m.jpg",
     alt: "img1",
     date: "sept 2025 - feb 2026",
     post: "web developer & technical supporter",
@@ -29,7 +29,7 @@ const ExperienceData = [
   },
   {
    
-    alt: "img1",
+    alt: "",
     date: ".... ",
 
   },
@@ -39,7 +39,7 @@ const ExperienceData = [
 
 const EducationData = [
   {
-    image: highschool,
+    image: "https://res.cloudinary.com/djgizjh2y/image/upload/v1787376158/vecteezy_school_1200587_pebseq.png",
     alt: "High School",
     qualification: "high school",
     institute: "central public school",
@@ -49,7 +49,7 @@ const EducationData = [
     subject: "Mathematics",
   },
   {
-    image: coding,
+    image: "https://res.cloudinary.com/djgizjh2y/image/upload/v1787331122/lcd-icon-vector_yc8vgf.jpg",
     alt: "Bachelor Degree",
     qualification: "bachelor degree",
     institute: "modi institute of management & technology",
