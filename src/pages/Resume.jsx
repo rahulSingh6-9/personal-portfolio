@@ -8,6 +8,7 @@ import Timeline from '../components/Timeline';
 import SkillBar from '../components/SkillBar';
 import CV from './image/RahulSingh.pdf'
 import { MdOutlineDownloading, MdLocationOn, MdCalendarToday } from "react-icons/md";
+import { motion } from "framer-motion";
 
 
 
@@ -85,88 +86,156 @@ const SkillBarData = [
   },
 ];
 
+import { useState, useEffect } from "react";
+
+const EducationTimelineItem = ({ item, index }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const isEven = index % 2 === 1;
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: isMobile ? 0 : (isEven ? 30 : -30), 
+      y: isMobile ? 30 : 0 
+    },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      y: 0, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    }
+  };
+
+  return (
+    <motion.div 
+      className='education-box-div'
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <div className='education-year-div'>
+        <small>{item.year}</small>
+        <h2 className='#'>{item.qualification}</h2>
+      </div>
+
+      <div className='education-box'>
+        <img src={item.image} alt={item.alt} />
+        <div className='institute-div'> <h5><span style={{ color: 'blue' }}>Institute:</span> {item.institute}</h5></div>
+        
+        {item.bachelors && (
+          <div style={{ marginTop: '5px' }}>
+            <h4 style={{ textTransform: 'capitalize', fontSize: '15px', color: '#333' }}><span style={{ color: 'blue' }}>Bachelors:</span> {item.bachelors}</h4>
+          </div>
+        )}
+
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '15px 0', paddingLeft: index % 2 === 1 ? '45px' : '0', paddingRight: index % 2 === 0 ? '45px' : '0' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <MdLocationOn style={{ fontSize: '18px', color: '#1a1919' }} />
+            <span style={{ textTransform: 'capitalize', fontSize: '14px', fontWeight: '600', color: '#1a1919' }}>{item.location}</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <MdCalendarToday style={{ fontSize: '16px', color: '#1a1919' }} />
+            <span style={{ fontSize: '14px', fontWeight: '600', color: '#1a1919' }}>{item.year}</span>
+          </div>
+        </div>
+
+        {item.board && (
+          <div>
+            <h4 style={{ fontSize: '15px', color: '#333' }}><span style={{ color: 'blue' }}>Board:</span> {item.board}</h4>
+          </div>
+        )}
+
+        {item.subject && (
+          <div>
+            <h4 style={{ textTransform: 'capitalize', fontSize: '15px', color: '#333' }}><span style={{ color: 'blue' }}>Subject:</span> {item.subject}</h4>
+          </div>
+        )}
+
+        {item.status && (
+          <div className='class1-div highlight' style={{ marginTop: '5px' }}>
+            <p style={{ fontWeight: '600' }}>{item.status}</p>
+          </div>
+        )}
+
+        {item.cgpa && (
+          <div className='class1-div highlight' style={{ marginTop: '5px' }}>
+            <p style={{ fontWeight: '600' }}>CGPA: {item.cgpa}</p>
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+};
+
 const Resume = () => {
   return (
     <>
       <section className="section">
         <div className='card-div'>
-          <h1 className='resume-name'>resume</h1>
-          <div className="cv-wrapper">
+          <motion.h1 
+            className='resume-name'
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            resume
+          </motion.h1>
+          <motion.div 
+            className="cv-wrapper"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <a href={CV} download className="download-cv">
              <MdOutlineDownloading className='downloadIcon' />
               Download CV
             </a>
-          </div>
+          </motion.div>
 
 
-          <div className="card experience">
+          <motion.div 
+            className="card experience"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{ duration: 0.6 }}
+          >
             <div className='heading-div'><h3>experience</h3></div>
             <Timeline data={ExperienceData} />
-
-          </div>
-          <div className="card education">
+          </motion.div>
+          
+          <motion.div 
+            className="card education"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{ duration: 0.6 }}
+          >
             <div className='heading-div'><h3>Education</h3></div>
             <div className='education-timeline'>
               {EducationData.map((item, index) => (
-                <div className='education-box-div' key={index}>
-                  <div className='education-year-div'>
-                    <small>{item.year}</small>
-                    <h2 className='#'>{item.qualification}</h2>
-                  </div>
-
-                  <div className='education-box'>
-                    <img src={item.image} alt={item.alt} />
-                    <div className='institute-div'> <h5><span style={{ color: 'blue' }}>Institute:</span> {item.institute}</h5></div>
-                    
-                    {item.bachelors && (
-                      <div style={{ marginTop: '5px' }}>
-                        <h4 style={{ textTransform: 'capitalize', fontSize: '15px', color: '#333' }}><span style={{ color: 'blue' }}>Bachelors:</span> {item.bachelors}</h4>
-                      </div>
-                    )}
-
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '15px 0', paddingLeft: index % 2 === 1 ? '45px' : '0', paddingRight: index % 2 === 0 ? '45px' : '0' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                        <MdLocationOn style={{ fontSize: '18px', color: '#1a1919' }} />
-                        <span style={{ textTransform: 'capitalize', fontSize: '14px', fontWeight: '600', color: '#1a1919' }}>{item.location}</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                        <MdCalendarToday style={{ fontSize: '16px', color: '#1a1919' }} />
-                        <span style={{ fontSize: '14px', fontWeight: '600', color: '#1a1919' }}>{item.year}</span>
-                      </div>
-                    </div>
-
-                    {item.board && (
-                      <div>
-                        <h4 style={{ fontSize: '15px', color: '#333' }}><span style={{ color: 'blue' }}>Board:</span> {item.board}</h4>
-                      </div>
-                    )}
-
-                    {item.subject && (
-                      <div>
-                        <h4 style={{ textTransform: 'capitalize', fontSize: '15px', color: '#333' }}><span style={{ color: 'blue' }}>Subject:</span> {item.subject}</h4>
-                      </div>
-                    )}
-
-                    {item.status && (
-                      <div className='class1-div highlight' style={{ marginTop: '5px' }}>
-                        <p style={{ fontWeight: '600' }}>{item.status}</p>
-                      </div>
-                    )}
-
-                    {item.cgpa && (
-                      <div className='class1-div highlight' style={{ marginTop: '5px' }}>
-                        <p style={{ fontWeight: '600' }}>CGPA: {item.cgpa}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
+                <EducationTimelineItem key={index} item={item} index={index} />
               ))}
             </div>
 
-          </div>
+          </motion.div>
 
-          <div className='card skill'>
+          <motion.div 
+            className='card skill'
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <div className='heading-div'><h3>professional skillset</h3></div>
             <div className='skill-img'>
               <div className='skill-info'>
@@ -179,7 +248,7 @@ const Resume = () => {
             </div>
 
 
-          </div>
+          </motion.div>
 
         </div>
       </section>

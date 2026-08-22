@@ -1,11 +1,26 @@
 import "./components.css";
 import "../pages/image/14672844.jpg";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+};
 
 const ProjectCardItem = ({ image, title, description, tech , open_btn }) => {
   return (
-    <div className="project-card">
+    <motion.div className="project-card" variants={itemVariants}>
       {/* Image */}
       <div className="project-img">
         <img src={image} alt={title} />
@@ -30,13 +45,19 @@ const ProjectCardItem = ({ image, title, description, tech , open_btn }) => {
           <button className="project-btn">View Project</button>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 const ProjectCard = ({ data }) => {
   return (
     <>
-      <div className="project-card-container">
+      <motion.div 
+        className="project-card-container"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
         {data.map((item, index) => (
           <ProjectCardItem
             key={index}
@@ -47,7 +68,7 @@ const ProjectCard = ({ data }) => {
             open_btn={item.open_btn}
           />
         ))}
-      </div>
+      </motion.div>
     </>
   );
 };

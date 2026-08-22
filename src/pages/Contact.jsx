@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import "../App.css";
 import Second_sec from '../components/Second_sec';
+import { motion } from "framer-motion";
 
 const Contact = () => {
 
@@ -29,8 +30,19 @@ const Contact = () => {
     <section className='section'>
   
      <div className='card-div contact-container'>
-       <h3>let's talk</h3>
-      <div className='contact-div'>
+       <motion.h3
+         initial={{ opacity: 0, y: -20 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.5 }}
+       >
+         let's talk
+       </motion.h3>
+      <motion.div 
+        className='contact-div'
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+      >
        
           <form className='form'  ref={form} onSubmit={sendEmail}>
             <input type="hidden" name="to_name" value={import.meta.env.VITE_OWNER_NAME} />
@@ -55,7 +67,7 @@ const Contact = () => {
           </form>
 
         
-      </div>
+      </motion.div>
      </div>
 
     </section>

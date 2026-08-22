@@ -3,6 +3,7 @@ import Second_sec from '../components/Second_sec'
 import contact_img from "./image/contactproject.png";
 import SPS_img from "./image/SPSgame.png"
 import ProjectCard from '../components/ProjectCard';
+import { motion } from "framer-motion";
 
 
 const ProjectCardData = [
@@ -29,13 +30,25 @@ const Project = () => {
     <>
       <section className='section'>
         <div className='card-div'>
-          <h1 className='resume-name'>Project</h1>
+          <motion.h1 
+            className='resume-name'
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Project
+          </motion.h1>
 
-          <div className='card proj'>
+          <motion.div 
+            className='card proj'
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <div className='project-div'>
               <ProjectCard data={ProjectCardData} />
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
       <Second_sec />

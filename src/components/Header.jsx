@@ -6,11 +6,7 @@ import profilephoto from "../pages/image/rahul Image2.jpeg";
 import { CiMobile3 } from "react-icons/ci";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
 import { useState, useEffect } from "react";
-
-
-
-
-
+import { motion } from "framer-motion";
 
 const Header = ({ mobileMode, setMobileMode }) => {
 
@@ -35,17 +31,21 @@ const Header = ({ mobileMode, setMobileMode }) => {
 
   return (
     <>
-      <header className="header">
+      <motion.header 
+        className="header"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         <IoChevronBackCircleOutline className="back-btn" onClick={() => { window.history.back() }} />
         <div className="header-logo">
-          <img className="header-image" src="https://res.cloudinary.com/djgizjh2y/image/upload/v1787329961/rahul_Image4_ovvore.jpg" />
+          <img className="header-image" src="https://res.cloudinary.com/djgizjh2y/image/upload/v1787329961/rahul_Image4_ovvore.jpg" alt="Logo" />
           <p className="header-name">Rahul Singh</p>
         </div>
         <div className="header-icon-div">
           <HiOutlineComputerDesktop onClick={turnOffMobile} className="phone-icon" />
           <CiMobile3 className="mobileBtn phone-icon" onClick={toggleMobile} />
         </div>
-
 
         <div className="header-list-div">
           <ul className="header-list">
@@ -68,9 +68,7 @@ const Header = ({ mobileMode, setMobileMode }) => {
           </ul>
         </div>
         <ToggleBar />
-      </header>
-
-
+      </motion.header>
     </>
   )
 };

@@ -7,13 +7,20 @@ import { FaGithub } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
 import { MdMarkEmailRead } from "react-icons/md";
+import { motion } from "framer-motion";
 
 import "./components.css";
 
 const Second_sec = () => {
   return (
     <>
-      <section class="sec-second">
+      <motion.section 
+        className="sec-second"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8 }}
+      >
         <div class="info-div">
           <div class="info">
             <MdCall className="call-icon" />
@@ -45,7 +52,7 @@ const Second_sec = () => {
         <div class="last-div">
           <p> © 2025 RJ Brand — All Rights Reserved</p>
         </div>
-      </section>
+      </motion.section>
     </>
   )
 }
