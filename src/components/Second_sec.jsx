@@ -24,7 +24,7 @@ const Second_sec = () => {
         <div class="info-div">
           <div class="info">
             <MdCall className="call-icon" />
-            <a href="tel:+919001685064">9001685064</a>
+            <a href="tel:+919001685064">900***64</a>
           </div>
           <div class="info">
             <MdMarkEmailRead className='call-icon' />

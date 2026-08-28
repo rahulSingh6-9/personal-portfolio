@@ -1,24 +1,15 @@
-import { BrowserRouter, Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ToggleBar from "./Togglebar";
 import "./components.css";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import profilephoto from "../pages/image/rahul Image2.jpeg";
 import { CiMobile3 } from "react-icons/ci";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const Header = ({ mobileMode, setMobileMode }) => {
-
-  // Load last active tab from localStorage
-  const [activeTab, setActiveTab] = useState(
-    localStorage.getItem("activeTab") || "about"
-  );
-
-  // Save active tab into localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem("activeTab", activeTab);
-  }, [activeTab]);
+  const location = useLocation();
+  const activeTab = location.pathname === "/" ? "about" : location.pathname.substring(1);
 
   //Mobile Function     
   const toggleMobile = () => {
@@ -50,20 +41,16 @@ const Header = ({ mobileMode, setMobileMode }) => {
         <div className="header-list-div">
           <ul className="header-list">
             <li>
-              <Link to="/" className={`nav-item ${activeTab === "about" ? "active" : ""}`}
-                onClick={() => setActiveTab("about")}>about</Link>
+              <Link to="/" className={`nav-item ${activeTab === "about" ? "active" : ""}`}>about</Link>
             </li>
             <li>
-              <Link to="/resume" className={`nav-item ${activeTab === "resume" ? "active" : ""}`}
-                onClick={() => setActiveTab("resume")}>resume</Link>
+              <Link to="/resume" className={`nav-item ${activeTab === "resume" ? "active" : ""}`}>resume</Link>
             </li>
             <li>
-              <Link to="/project" className={`nav-item ${activeTab === "project" ? "active" : ""}`}
-                onClick={() => setActiveTab("project")}>project</Link>
+              <Link to="/project" className={`nav-item ${activeTab === "project" ? "active" : ""}`}>project</Link>
             </li>
             <li>
-              <Link to="/contact" className={`nav-item ${activeTab === "contact" ? "active" : ""}`}
-                onClick={() => setActiveTab("contact")}>contact</Link>
+              <Link to="/contact" className={`nav-item ${activeTab === "contact" ? "active" : ""}`}>contact</Link>
             </li>
           </ul>
         </div>

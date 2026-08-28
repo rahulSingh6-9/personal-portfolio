@@ -106,7 +106,7 @@ const About = () => {
             </motion.div>
             
             <motion.p className='About-para' variants={itemFadeUp}>Hi, I’m <span className='blue-gloww'>{import.meta.env.Name}</span> — a web developer currently pursuing a <span className='blue-gloww'>Bachelor’s in Computer Applications (BCA)</span>. I’m passionate about building modern, responsive, and user-friendly websites while learning new technologies every day to strengthen my development skills.</motion.p>
-            <motion.p className='About-para' variants={itemFadeUp}>I’m currently exploring Node.js, Express, and databases, with a strong focus on writing clean, maintainable code and building scalable full-stack applications <span className='blue-gloww'>using HTML, CSS, JavaScript, React, Node.js, MySQL, and Git</span>, while working toward a stable and growth-oriented role as a full-stack developer.</motion.p>
+            <motion.p className='About-para' variants={itemFadeUp}>I’m currently exploring Node.js, Express, and databases, with a strong focus on writing clean, maintainable code and building scalable full-stack applications <span className='blue-gloww'>using HTML, CSS, JavaScript, React, Node.js, MySQL, MongoDB, Git and Docker</span>, while working toward a stable and growth-oriented role as a full-stack developer.</motion.p>
           </motion.div>
         </div>
       </section>
